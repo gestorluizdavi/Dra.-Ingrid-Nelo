@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F5">
+<meta name="description" content="Dra. Ingrid Nelo · Cirurgiã-Dentista especialista em Harmonização Facial. CRO-CE 12833. Clínica Sorria, Sobral-CE.">
+<title>Dra. Ingrid Nelo · Harmonização Facial · Sobral / CE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#FAF8F5;
+    --bg-alt:#F1EFEA;
+    --ink:#222B36;
+    --ink-soft:#5A6573;
+    --line:#D9D5CD;
+    --serenity:#8FA0B5;
+    --serenity-deep:#6E81A0;
+    --serenity-soft:#C7CFDB;
+    --champagne:#B89A6E;
+    --white:#FFFFFF;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Manrope","Inter",system-ui,-apple-system,sans-serif;
+    font-weight:300;font-size:16px;line-height:1.6;
+    color:var(--ink);background:var(--bg);
+    overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    font-feature-settings:"ss01","ss02","liga","kern";
+    letter-spacing:-.005em;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ::selection{background:var(--serenity);color:var(--white)}
+
+  .serif{font-family:"Fraunces","Cormorant Garamond",Georgia,serif;font-weight:400;letter-spacing:-.012em}
+  .kicker{
+    font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;
+    display:inline-flex;align-items:center;gap:.8rem;
+  }
+  .kicker::before{content:"";width:28px;height:1px;background:var(--serenity-deep)}
+  .num{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:14px;color:var(--serenity-deep);font-weight:400;
+    letter-spacing:.04em;
+  }
+  .container{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+  section{padding:120px 0;position:relative}
+  @media (max-width:768px){
+    section{padding:72px 0}
+    .container{width:calc(100% - 32px)}
+  }
+  @media (max-width:480px){
+    section{padding:60px 0}
+  }
+
+  /* ─── NAVBAR ─── */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:18px 0;background:rgba(250,248,245,.78);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    transition:padding .3s ease,box-shadow .3s ease;
+  }
+  .nav.scrolled{padding:12px 0;box-shadow:0 1px 0 rgba(34,43,54,.06)}
+  .nav .container{display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{height:42px;display:flex;align-items:center}
+  .nav-logo svg{height:100%;width:auto}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:.55rem;
+    padding:11px 20px;border:1px solid var(--ink);
+    border-radius:999px;font-size:13px;letter-spacing:.04em;
+    transition:all .25s ease;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--bg)}
+  .nav-cta svg{width:14px;height:14px}
+  @media(max-width:600px){.nav-cta span{display:none}.nav-cta{padding:11px 13px}}
+
+  /* ═══════════════════════════════════════════════════════════
+     HERO ─ Mobile-first
+     Estratégia: layout em coluna onde a foto domina o terço superior
+     (rosto da Dra. visível) e o texto fica ancorado no rodapé,
+     dentro de gradient escuro denso pra legibilidade total.
+     No desktop, layout split: foto à direita com mask suave.
+  ════════════════════════════════════════════════════════════ */
+  .hero{
+    position:relative;overflow:hidden;color:var(--bg);
+    background-color:#1B232E;
+    min-height:100svh;min-height:100dvh;
+    display:flex;flex-direction:column;
+    padding:104px 0 40px;
+  }
+  /* MOBILE: foto preenche todo o hero, foco alto pra mostrar rosto */
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('assets/dra-ingrid-hero.jpg');
+    background-size:cover;
+    background-position:62% 12%;
+    background-repeat:no-repeat;
+    background-color:#1B232E;
+    transform:scale(1.05);opacity:0;
+    transition:transform 1.6s cubic-bezier(.2,.8,.2,1),opacity 1.2s ease;
+    filter:contrast(1.06) saturate(1.05);
+  }
+  .hero.show .hero-bg{transform:scale(1);opacity:1}
+  /* MOBILE: gradient denso embaixo, leve em cima (foto respira) */
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,
+      rgba(27,35,46,.20) 0%,
+      rgba(27,35,46,.05) 25%,
+      rgba(27,35,46,.45) 50%,
+      rgba(27,35,46,.88) 78%,
+      rgba(27,35,46,.98) 100%);
+  }
+  .hero-mark-bg{display:none}
+  .hero .container{
+    position:relative;z-index:2;
+    width:min(1240px,calc(100% - 32px));
+    flex:1;display:flex;flex-direction:column;
+  }
+  /* MOBILE: kicker no topo, texto no fundo */
+  .hero-kicker-mobile{margin-top:8px}
+  .hero-text{
+    margin-top:auto;
+    width:100%;max-width:620px;
+  }
+  .hero-text .kicker{
+    color:rgba(255,255,255,.85);margin-bottom:24px;
+    font-size:9.5px;letter-spacing:.32em;
+  }
+  .hero-text .kicker::before{background:var(--serenity);width:22px}
+  .hero h1{
+    font-family:"Fraunces","Cormorant Garamond",Georgia,serif;
+    font-size:clamp(34px,9.5vw,108px);
+    line-height:1.02;letter-spacing:-.024em;
+    font-weight:300;color:var(--bg);
+    text-shadow:0 2px 24px rgba(0,0,0,.30);
+  }
+  .hero h1 .l1{display:block}
+  .hero h1 .l2{
+    display:block;font-style:italic;font-weight:300;
+    color:#E6ECF4;
+    margin-top:4px;letter-spacing:-.028em;
+  }
+  .hero-sub{
+    font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.82);
+    max-width:480px;margin:20px 0 28px;font-weight:300;
+    letter-spacing:.005em;
+    text-shadow:0 1px 12px rgba(0,0,0,.4);
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;row-gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    padding:15px 26px;border-radius:999px;font-size:11.5px;letter-spacing:.18em;
+    text-transform:uppercase;transition:all .3s ease;font-weight:500;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bg);color:var(--ink)}
+  .btn-primary:hover{background:var(--serenity);color:var(--bg);transform:translateY(-2px)}
+  .btn-ghost{color:var(--bg);border-bottom:1px solid rgba(255,255,255,.65);border-radius:0;padding:6px 0;letter-spacing:.16em}
+  .btn-ghost:hover{color:var(--serenity-soft);border-color:var(--serenity-soft)}
+  .btn svg{width:14px;height:14px;transition:transform .3s}
+  .btn-primary:hover svg{transform:translateX(3px)}
+  /* MOBILE muito estreito: botões empilham, primário ocupa largura */
+  @media(max-width:380px){
+    .hero-actions{flex-direction:column;align-items:stretch;gap:14px}
+    .btn-primary{width:100%}
+    .btn-ghost{align-self:flex-start}
+  }
+
+  .hero-tag{display:none}
+  .hero-scroll{display:none}
+
+  /* sobrescreve reveal global */
+  .hero.reveal{opacity:1;transform:none}
+
+  /* ─── TABLET (601-900): mais ar, foto continua cover ─── */
+  @media(min-width:601px){
+    .hero{padding:120px 0 60px}
+    .hero-text .kicker{font-size:11px;margin-bottom:32px}
+    .hero-sub{font-size:16px;margin:28px 0 40px;max-width:520px}
+    .btn{padding:16px 30px;font-size:12.5px}
+  }
+
+  /* ─── DESKTOP (>900): split horizontal, foto à direita com mask suave ─── */
+  @media(min-width:901px){
+    .hero{
+      padding:140px 0 80px;
+      flex-direction:row;align-items:center;
+    }
+    .hero-bg{
+      background-size:auto 110%;
+      background-position:right center;
+      transform:translateX(24px);
+      mask-image:linear-gradient(to right,
+        transparent 0%,
+        rgba(0,0,0,.05) 18%,
+        rgba(0,0,0,.40) 32%,
+        rgba(0,0,0,.85) 48%,
+        #000 60%);
+      -webkit-mask-image:linear-gradient(to right,
+        transparent 0%,
+        rgba(0,0,0,.05) 18%,
+        rgba(0,0,0,.40) 32%,
+        rgba(0,0,0,.85) 48%,
+        #000 60%);
+    }
+    .hero.show .hero-bg{transform:translateX(0)}
+    .hero-overlay{
+      background:linear-gradient(180deg,
+        rgba(27,35,46,.10) 0%,
+        rgba(27,35,46,0) 35%,
+        rgba(27,35,46,.30) 100%);
+    }
+    .hero .container{flex:none;display:block}
+    .hero-text{margin-top:0;max-width:620px}
+    .hero-sub{font-size:17px;margin:36px 0 44px}
+    .btn{padding:17px 32px;font-size:13px;letter-spacing:.16em}
+    .hero-scroll{
+      display:flex;
+      position:absolute;left:24px;top:50%;
+      transform:translateY(-50%) rotate(-90deg);transform-origin:left center;
+      z-index:3;
+      font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+      color:rgba(255,255,255,.45);font-weight:500;
+      align-items:center;gap:14px;
+    }
+    .hero-scroll::after{content:"";width:48px;height:1px;background:rgba(255,255,255,.35)}
+  }
+
+  /* ─── MANIFESTO (editorial vertical) ─── */
+  .manifesto{
+    background:var(--bg-alt);padding-block:140px;
+    text-align:left;
+  }
+  .manifesto .container{max-width:920px;margin-inline:auto}
+  .manifesto-h2{
+    font-family:"Fraunces","Cormorant Garamond",serif;
+    font-size:clamp(38px,5.8vw,76px);
+    line-height:1.02;letter-spacing:-.024em;font-weight:300;
+    margin:24px 0 40px;color:var(--ink);
+  }
+  .manifesto-h2 em{font-style:italic;color:var(--serenity-deep);font-weight:400}
+  .manifesto-lead{
+    font-size:clamp(17px,2.1vw,22px);
+    line-height:1.55;color:var(--ink-soft);
+    max-width:680px;font-weight:300;
+    letter-spacing:-.005em;
+  }
+  .credentials{
+    margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    padding-top:36px;border-top:1px solid var(--line);
+  }
+  .credentials .label{
+    font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;
+  }
+  .credentials .value{
+    font-family:"Fraunces","Cormorant Garamond",serif;
+    font-size:clamp(18px,1.8vw,24px);margin-top:8px;
+    font-style:italic;letter-spacing:-.012em;color:var(--ink);
+  }
+  @media(max-width:900px){
+    .manifesto{padding-block:72px}
+    .manifesto-h2{margin:20px 0 28px}
+    .credentials{margin-top:44px;padding-top:28px;gap:24px}
+  }
+  @media(max-width:600px){
+    .credentials{grid-template-columns:1fr;gap:18px}
+    .credentials>div{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+    .credentials .label{flex-shrink:0}
+    .credentials .value{margin-top:0;text-align:right}
+  }
+
+  /* ─── ESPECIALIDADES (agrupadas, compactas) ─── */
+  .specialties .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:56px;gap:40px;flex-wrap:wrap}
+  .specialties h2{
+    font-family:"Fraunces","Cormorant Garamond",serif;
+    font-size:clamp(36px,4.8vw,60px);font-weight:300;line-height:1.02;
+    letter-spacing:-.022em;max-width:680px;
+  }
+  .specialties h2 em{font-style:italic;color:var(--serenity-deep)}
+  .spec-aside{font-size:14px;color:var(--ink-soft);max-width:280px;line-height:1.6;font-weight:300}
+
+  .spec-index{
+    display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:start;
+    border-top:1px solid var(--line);padding-top:8px;
+  }
+
+  /* Grupos */
+  .spec-list{display:flex;flex-direction:column;gap:0}
+  .spec-group{
+    padding:28px 0;border-bottom:1px solid var(--line);
+  }
+  .spec-group:last-child{border-bottom:none}
+  .spec-group-head{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:18px;
+  }
+  .spec-group-head .gnum{
+    font-family:"Fraunces","Cormorant Garamond",serif;
+    font-style:italic;font-size:13px;color:var(--serenity-deep);
+    font-weight:400;letter-spacing:.02em;
+  }
+  .spec-group-head .gname{
+    font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--ink);font-weight:600;
+  }
+  .spec-group-items{
+    list-style:none;display:grid;grid-template-columns:1fr 1fr;
+    gap:0 32px;
+  }
+  .spec-group-items.single{grid-template-columns:1fr}
+  .spec-row{
+    position:relative;display:grid;grid-template-columns:24px 1fr 16px;
+    align-items:baseline;gap:12px;padding:11px 0;
+    cursor:pointer;transition:padding-left .35s ease,color .35s ease;
+  }
+  .spec-row .spec-num{
+    font-family:"Fraunces","Cormorant Garamond",serif;font-style:italic;
+    font-size:13px;color:var(--ink-soft);transition:color .35s;
+    font-weight:400;
+  }
+  .spec-row .spec-name{
+    font-family:"Manrope","Inter",sans-serif;font-weight:400;
+    font-size:16px;letter-spacing:-.005em;line-height:1.2;
+    color:var(--ink);transition:color .35s;
+  }
+  .spec-row .spec-arrow{
+    width:14px;height:14px;color:var(--ink-soft);
+    opacity:0;transform:translateX(-6px);transition:all .35s;
+  }
+  .spec-row:hover .spec-arrow,
+  .spec-row.active .spec-arrow{opacity:1;transform:translateX(0);color:var(--serenity-deep)}
+  .spec-row:hover .spec-name,
+  .spec-row.active .spec-name{color:var(--serenity-deep)}
+  .spec-row:hover{padding-left:6px}
+  .spec-row.active .spec-num{color:var(--serenity-deep)}
+  .spec-row.active::before{
+    content:"";position:absolute;left:-16px;top:50%;width:10px;height:1px;
+    background:var(--serenity-deep);transform:translateY(-50%);
+  }
+
+  /* Painel direito */
+  .spec-panel{
+    position:sticky;top:120px;
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:48px 44px;
+    overflow:hidden;
+  }
+  .spec-panel::before{
+    content:"";position:absolute;right:-80px;top:-80px;
+    width:280px;height:280px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%238FA0B5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><circle cx='64' cy='38' r='3.2' fill='%238FA0B5'/><path d='M64 56 C 60 92, 56 130, 70 168 C 80 188, 100 188, 108 168'/><path d='M108 168 C 116 130, 138 92, 144 56 C 145 50, 142 46, 138 48 C 122 56, 110 88, 108 168Z'/></g></svg>") no-repeat center/contain;
+    opacity:.10;pointer-events:none;
+  }
+  .spec-content{position:relative;min-height:200px}
+  .spec-content .spec-tag{
+    display:inline-block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--serenity-deep);margin-bottom:14px;font-weight:500;
+  }
+  .spec-content h3{
+    font-family:"Fraunces","Cormorant Garamond",serif;font-weight:400;
+    font-size:36px;line-height:1.05;letter-spacing:-.018em;
+    margin-bottom:20px;color:var(--ink);
+  }
+  .spec-content p{
+    color:var(--ink-soft);font-size:15.5px;line-height:1.75;margin-bottom:18px;
+  }
+  .spec-content ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}
+  .spec-content ul li{
+    font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:12px;
+  }
+  .spec-content ul li::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--serenity);flex-shrink:0;
+  }
+  .spec-content.fading{opacity:0;transform:translateY(8px)}
+  .spec-content{transition:opacity .35s ease,transform .35s ease}
+
+  @media(max-width:900px){
+    .specialties{padding-block:72px}
+    .specialties .head{margin-bottom:36px;gap:20px}
+    .spec-aside{font-size:13px;max-width:none}
+    .spec-index{grid-template-columns:1fr;gap:0}
+    .spec-panel{
+      position:static;border:none;padding:0;background:transparent;margin-top:0;
+    }
+    .spec-panel::before{display:none}
+    .spec-group{padding:18px 0}
+    .spec-group-head{margin-bottom:10px}
+    .spec-group-items{grid-template-columns:1fr;gap:0}
+    .spec-row{grid-template-columns:24px 1fr 16px;padding:13px 0}
+    .spec-row .spec-name{font-size:15.5px}
+    .spec-row.active .spec-content-mobile{display:block}
+    .spec-content-mobile{
+      grid-column:1/-1;display:none;padding:10px 0 18px 36px;
+    }
+    .spec-content-mobile h3{display:none}
+    .spec-content-mobile p{font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:12px;font-weight:300}
+    .spec-content-mobile ul{list-style:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+    .spec-content-mobile ul li{font-size:12.5px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;font-weight:300}
+    .spec-content-mobile ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--serenity);flex-shrink:0}
+    .spec-panel-desktop{display:none}
+  }
+  @media(min-width:901px){
+    .spec-content-mobile{display:none!important}
+  }
+
+  /* ─── ANTES E DEPOIS ─── */
+  .results{background:var(--ink);color:var(--bg);padding-block:140px;position:relative;overflow:hidden}
+  @media(max-width:900px){.results{padding-block:72px}}
+  .results::before{
+    content:"";position:absolute;top:-150px;right:-150px;
+    width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle,rgba(143,160,181,.18) 0%,transparent 70%);
+  }
+  .results .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:72px;gap:32px;flex-wrap:wrap;position:relative}
+  .results h2{
+    font-size:clamp(40px,5.6vw,72px);font-weight:300;line-height:1;
+    letter-spacing:-.02em;color:var(--bg);
+  }
+  .results h2 em{font-style:italic;color:var(--serenity)}
+  .results .kicker{color:var(--serenity-soft)}
+  .results .kicker::before{background:var(--serenity)}
+  .results-aside{font-size:14px;color:var(--serenity-soft);max-width:320px;line-height:1.65}
+  .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ba-card{display:flex;flex-direction:column;gap:18px}
+  .ba-slider{
+    position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:2px;
+    user-select:none;cursor:ew-resize;background:#1B232E;
+    max-height:560px;
+  }
+  .ba-img{
+    position:absolute;inset:0;background-size:cover;background-position:center 30%;
+    background-repeat:no-repeat;
+  }
+  .ba-after{background-color:#1B232E}
+  .ba-before{background-color:#1B232E;clip-path:inset(0 50% 0 0)}
+  .ba-handle{
+    position:absolute;top:0;bottom:0;left:50%;width:2px;
+    background:var(--bg);transform:translateX(-50%);pointer-events:none;
+  }
+  .ba-handle::after{
+    content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;
+    border-radius:50%;background:var(--bg);transform:translate(-50%,-50%);
+    box-shadow:0 4px 16px rgba(0,0,0,.3);
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23222B36' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/><polyline points='9 18 15 12 9 6' transform='translate(8 0)'/></svg>");
+    background-repeat:no-repeat;background-position:center;
+  }
+  .ba-label{
+    position:absolute;top:14px;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;background:rgba(0,0,0,.45);
+    padding:5px 10px;border-radius:2px;color:var(--bg);
+    font-weight:500;backdrop-filter:blur(4px);
+  }
+  .ba-label.l{left:14px}.ba-label.r{right:14px}
+  .ba-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--serenity-soft)}
+  .ba-meta strong{color:var(--bg);font-weight:500;font-family:"Cormorant Garamond",serif;font-size:18px;font-style:italic}
+  @media(max-width:900px){
+    .ba-grid{grid-template-columns:1fr;max-width:420px;margin-inline:auto;gap:20px}
+    .results .head{margin-bottom:40px;gap:20px}
+    .results-aside{font-size:13px}
+    .ba-slider{max-height:none}
+    .ba-handle::after{width:36px;height:36px}
+  }
+
+  /* ─── DEPOIMENTOS ─── */
+  .testimonials{padding-block:140px;text-align:center}
+  .testimonials .kicker{margin-bottom:48px}
+  .quote{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.25;letter-spacing:-.01em;
+    max-width:880px;margin:0 auto 36px;color:var(--ink);
+    position:relative;
+  }
+  .quote::before{
+    content:"\201C";position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+    font-size:140px;color:var(--serenity);opacity:.35;line-height:1;
+  }
+  .quote-author{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .quote-author span{display:block;margin-top:6px;color:var(--serenity-deep);text-transform:none;letter-spacing:0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;letter-spacing:0}
+  .quote-dots{display:flex;gap:8px;justify-content:center;margin-top:48px}
+  .quote-dots button{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .25s}
+  .quote-dots button.active{background:var(--serenity-deep);width:24px;border-radius:4px}
+
+  /* ─── FAQ ─── */
+  .faq{background:var(--bg-alt);padding-block:140px}
+  .faq-grid{display:grid;grid-template-columns:.5fr 1fr;gap:80px;align-items:start}
+  .faq h2{font-size:clamp(36px,4.6vw,56px);font-weight:300;line-height:1.05;letter-spacing:-.018em}
+  .faq h2 em{font-style:italic;color:var(--serenity-deep)}
+  .faq-list{border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{
+    width:100%;display:flex;justify-content:space-between;align-items:center;
+    padding:28px 0;text-align:left;font-size:18px;font-weight:500;
+    transition:color .25s;
+  }
+  .faq-q:hover{color:var(--serenity-deep)}
+  .faq-q .plus{
+    width:32px;height:32px;border:1px solid var(--ink);border-radius:50%;
+    display:grid;place-items:center;flex-shrink:0;margin-left:24px;
+    transition:transform .35s,background .25s,border-color .25s;
+    font-size:18px;line-height:1;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .45s ease,padding .35s ease;
+    color:var(--ink-soft);font-size:15px;line-height:1.7;
+  }
+  .faq-item.open .faq-a{max-height:300px;padding:0 0 28px}
+  @media(max-width:900px){
+    .faq{padding-block:72px}
+    .faq-grid{grid-template-columns:1fr;gap:32px}
+    .faq-q{font-size:16px;padding:22px 0}
+    .faq-q .plus{width:28px;height:28px;font-size:16px;margin-left:16px}
+    .faq-a{font-size:14px}
+  }
+
+  /* ─── CTA FINAL ─── */
+  .cta{
+    padding:160px 0;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,var(--bg) 0%,#EFEDE6 100%);
+  }
+  @media(max-width:900px){.cta{padding:96px 0}}
+  @media(max-width:480px){.cta{padding:72px 0}}
+  .cta-mark{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:min(720px,90%);color:var(--serenity);opacity:.10;
+    pointer-events:none;
+  }
+  .cta-content{position:relative}
+  .cta h2{
+    font-size:clamp(44px,6vw,84px);font-weight:300;line-height:.98;
+    letter-spacing:-.02em;max-width:920px;margin:24px auto 32px;
+  }
+  .cta h2 em{font-style:italic;color:var(--serenity-deep)}
+  .cta p{font-size:17px;color:var(--ink-soft);max-width:560px;margin:0 auto 44px;line-height:1.65}
+
+  /* ─── FOOTER ─── */
+  footer{background:var(--ink);color:#A8B2BF;padding:70px 0 30px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .foot-grid h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--white);margin-bottom:18px;font-weight:500}
+  .foot-grid a{display:block;padding:4px 0;transition:color .2s}
+  .foot-grid a:hover{color:var(--serenity)}
+  .foot-logo{height:60px;color:var(--bg);margin-bottom:20px;display:block}
+  .foot-logo svg{height:100%;width:auto}
+  .foot-about{font-size:14px;line-height:1.7;color:#A8B2BF;max-width:320px}
+  .foot-bot{
+    border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-size:12px;color:#7A8492;
+  }
+  .disclaimer{font-size:11px;color:#67707D;line-height:1.6;margin-top:20px;font-style:italic;max-width:880px}
+  @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.show{opacity:1;transform:none}
+  .reveal-stagger>*{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .reveal-stagger.show>*:nth-child(1){transition-delay:.05s}
+  .reveal-stagger.show>*:nth-child(2){transition-delay:.15s}
+  .reveal-stagger.show>*:nth-child(3){transition-delay:.25s}
+  .reveal-stagger.show>*:nth-child(4){transition-delay:.35s}
+  .reveal-stagger.show>*{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal,.reveal-stagger>*{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ╔══ SVG SYMBOL: LOGO MONOGRAMA ══╗ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="logo-mark" viewBox="0 0 200 200">
+    <!-- monograma "iN" estilizado em formato de dente -->
+    <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- pingo do i -->
+      <circle cx="64" cy="38" r="3.2" fill="currentColor"/>
+      <!-- corpo curvo esquerdo (i alongado virando dente) -->
+      <path d="M64 56 C 60 92, 56 130, 70 168 C 80 188, 100 188, 108 168"/>
+      <!-- corpo curvo direito (n virando dente) -->
+      <path d="M108 168 C 116 130, 138 92, 144 56 C 145 50, 142 46, 138 48 C 122 56, 110 88, 108 168Z"/>
+    </g>
+  </symbol>
+  <symbol id="logo-full" viewBox="0 0 720 220">
+    <use href="#logo-mark" x="260" y="0" width="200" height="120"/>
+    <text x="360" y="170" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="38" font-weight="500" letter-spacing="6" fill="currentColor">DRA. INGRID NELO</text>
+    <text x="360" y="200" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="6" fill="currentColor">CIRURGIÃ-DENTISTA</text>
+  </symbol>
+  <symbol id="logo-horizontal" viewBox="0 0 360 80">
+    <use href="#logo-mark" x="0" y="-8" width="80" height="80"/>
+    <g transform="translate(92 0)">
+      <text x="0" y="42" font-family="'Cormorant Garamond', serif" font-size="26" font-weight="500" letter-spacing="3.5" fill="currentColor">DRA. INGRID NELO</text>
+      <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" letter-spacing="4" fill="currentColor" opacity=".75">CIRURGIÃ-DENTISTA</text>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ╔══ NAVBAR ══╗ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#top" class="nav-logo" style="color:var(--ink)">
+      <svg><use href="#logo-horizontal"/></svg>
+    </a>
+    <a href="#agendar" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span>Agendar consulta</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ╔══ HERO ══╗ -->
+<header class="hero reveal" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <svg class="hero-mark-bg" aria-hidden="true"><use href="#logo-mark"/></svg>
+  <div class="container">
+    <div class="hero-text">
+      <span class="kicker">Harmonização Facial · Sobral / CE</span>
+      <h1>
+        <span class="l1">Realce sua</span>
+        <span class="l1">essência,</span>
+        <span class="l2">naturalize sua beleza.</span>
+      </h1>
+      <p class="hero-sub">Cirurgiã-dentista especialista em Harmonização Facial. Procedimentos minimamente invasivos pensados para realçar o que já é seu, sem perder naturalidade.</p>
+      <div class="hero-actions">
+        <a href="#agendar" class="btn btn-primary">
+          Agendar avaliação
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#resultados" class="btn btn-ghost">Ver antes e depois</a>
+      </div>
+    </div>
+  </div>
+  <span class="hero-scroll" aria-hidden="true">Scroll</span>
+</header>
+
+<!-- ╔══ MANIFESTO ══╗ -->
+<section class="manifesto">
+  <div class="container">
+    <span class="num reveal">01 / Manifesto</span>
+    <h2 class="manifesto-h2 reveal">A beleza<br>que <em>já era sua</em>,<br>agora em evidência.</h2>
+    <p class="manifesto-lead reveal">Cada rosto carrega uma simetria própria. O procedimento começa antes da agulha, na leitura cuidadosa do que pede ajuste e do que pede silêncio. Naturalidade é inegociável.</p>
+    <div class="credentials reveal">
+      <div><div class="label">Formação</div><div class="value">UFC, Odontologia</div></div>
+      <div><div class="label">Registro</div><div class="value">CRO-CE 12833</div></div>
+      <div><div class="label">Clínica</div><div class="value">Sorria · Sobral</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ ESPECIALIDADES (índice editorial) ══╗ -->
+<section class="specialties" id="especialidades">
+  <div class="container">
+    <div class="head reveal">
+      <div>
+        <span class="num">02 / Procedimentos</span>
+        <h2 style="margin-top:18px">Onde a <em>técnica</em> encontra<br>o seu rosto.</h2>
+      </div>
+      <p class="spec-aside">Todos os procedimentos são precedidos de avaliação clínica e plano de tratamento personalizado.</p>
+    </div>
+
+    <div class="spec-index reveal">
+      <ul class="spec-list" id="spec-list">
+        <li class="spec-row active" data-spec="preenchimentos">
+          <span class="spec-num">i.</span>
+          <span class="spec-name">Preenchimentos</span>
+          <svg class="spec-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <div class="spec-content-mobile">
+            <p>Ácido hialurônico aplicado dentro da arquitetura facial existente. Sem volume excessivo, sem mudança de identidade.</p>
+            <ul><li>Lábios</li><li>Mandíbula</li><li>Malar (maçã do rosto)</li><li>Olheiras (sulco lacrimal)</li></ul>
+          </div>
+        </li>
+        <li class="spec-row" data-spec="botox">
+          <span class="spec-num">ii.</span>
+          <span class="spec-name">Botox</span>
+          <svg class="spec-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <div class="spec-content-mobile">
+            <p>Toxina botulínica para suavizar linhas de expressão preservando movimento. Aplicação personalizada, sem cara congelada.</p>
+            <ul><li>Botox tradicional</li><li>Microbotox (skin quality)</li><li>Full Face (protocolo integrado)</li></ul>
+          </div>
+        </li>
+        <li class="spec-row" data-spec="fios">
+          <span class="spec-num">iii.</span>
+          <span class="spec-name">Fios</span>
+          <svg class="spec-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <div class="spec-content-mobile">
+            <p>Fios bioabsorvíveis que sustentam ou tracionam o tecido enquanto estimulam a produção de colágeno.</p>
+            <ul><li>Sustentação (lifting suave)</li><li>Tração (reposicionamento)</li><li>Estímulo de colágeno por 6 a 12 meses</li></ul>
+          </div>
+        </li>
+        <li class="spec-row" data-spec="pdrn">
+          <span class="spec-num">iv.</span>
+          <span class="spec-name">Microagulhamento com PDRN</span>
+          <svg class="spec-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <div class="spec-content-mobile">
+            <p>Microagulhas associadas à infusão de PDRN, fragmentos de DNA com ação regeneradora profunda da pele.</p>
+            <ul><li>Estímulo intenso de colágeno</li><li>Tratamento de cicatrizes de acne</li><li>Melhora de manchas e textura</li></ul>
+          </div>
+        </li>
+      </ul>
+
+      <aside class="spec-panel spec-panel-desktop" aria-live="polite">
+        <div class="spec-content" id="spec-content">
+          <span class="spec-tag">i. Procedimento</span>
+          <h3>Preenchimentos</h3>
+          <p>Ácido hialurônico aplicado dentro da arquitetura facial existente. Cada plano é desenhado a partir das proporções únicas do rosto, sem volume excessivo, sem mudança de identidade.</p>
+          <p style="font-family:'Fraunces','Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--serenity-deep);letter-spacing:-.012em">O lifting que não passa pela cirurgia.</p>
+          <ul>
+            <li>Lábios (definição e hidratação)</li>
+            <li>Mandíbula (linha mandibular e mento)</li>
+            <li>Malar (maçãs do rosto)</li>
+            <li>Olheiras (sulco lacrimal)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ ANTES E DEPOIS ══╗ -->
+<section class="results" id="resultados">
+  <div class="container">
+    <div class="head reveal">
+      <div>
+        <span class="kicker" style="color:var(--serenity-soft)">Resultados reais</span>
+        <h2 style="margin-top:24px">O antes & depois <em>fala</em><br>por nós.</h2>
+      </div>
+      <p class="results-aside">Arraste o controle deslizante para revelar a transformação. Casos compartilhados com autorização das pacientes.</p>
+    </div>
+
+    <div class="ba-grid reveal-stagger">
+      <article class="ba-card">
+        <div class="ba-slider" data-slider>
+          <div class="ba-img ba-after" style="background-image:url('assets/case-1-depois.jpg')"></div>
+          <div class="ba-img ba-before" style="background-image:url('assets/case-1-antes.jpg')" data-before></div>
+          <span class="ba-label l">Antes</span>
+          <span class="ba-label r">Depois</span>
+          <div class="ba-handle" data-handle></div>
+        </div>
+        <div class="ba-meta"><span>Caso 01</span><strong>Preenchimento labial</strong></div>
+      </article>
+      <article class="ba-card">
+        <div class="ba-slider" data-slider>
+          <div class="ba-img ba-after" style="background-image:url('assets/case-2-depois.jpg')"></div>
+          <div class="ba-img ba-before" style="background-image:url('assets/case-2-antes.jpg')" data-before></div>
+          <span class="ba-label l">Antes</span>
+          <span class="ba-label r">Depois</span>
+          <div class="ba-handle" data-handle></div>
+        </div>
+        <div class="ba-meta"><span>Caso 02</span><strong>Fios de sustentação</strong></div>
+      </article>
+      <article class="ba-card">
+        <div class="ba-slider" data-slider>
+          <div class="ba-img ba-after" style="background-image:url('assets/case-3-depois.jpg')"></div>
+          <div class="ba-img ba-before" style="background-image:url('assets/case-3-antes.jpg')" data-before></div>
+          <span class="ba-label l">Antes</span>
+          <span class="ba-label r">Depois</span>
+          <div class="ba-handle" data-handle></div>
+        </div>
+        <div class="ba-meta"><span>Caso 03</span><strong>Harmonização masculina</strong></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ FAQ ══╗ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="reveal">
+        <span class="num">03 / Perguntas</span>
+        <h2 style="margin-top:18px">Tudo o que <em>você precisa</em> saber.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Dentista pode fazer Harmonização Facial?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Sim. O Conselho Federal de Odontologia regulamenta a Harmonização Facial como especialidade odontológica desde 2019 (Resolução CFO-198). É procedimento legítimo da odontologia, conduzido com formação específica.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Quanto tempo dura o resultado?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Varia por procedimento. Toxina botulínica costuma durar de 4 a 6 meses; preenchimentos com ácido hialurônico, de 9 a 18 meses; bioestimuladores entregam efeito progressivo que pode persistir por mais de 18 meses. Avaliamos isso na consulta.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">É doloroso? Preciso de afastamento?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Os procedimentos são minimamente invasivos. Aplicamos anestesia tópica ou bloqueio quando necessário. Edema leve e marcas pontuais podem ocorrer nas primeiras 48h, mas a maioria das pacientes retoma a rotina no mesmo dia.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como funciona a primeira consulta?<span class="plus">+</span></button>
+          <div class="faq-a"><p>É uma avaliação completa: análise facial, escuta dos seus objetivos, discussão de plano e estimativa de investimento. Nenhum procedimento é feito sem que você tenha clareza total sobre o que será aplicado.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Onde fica a clínica?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Clínica Odontológica Sorria, na R. Des. Moreira da Rocha, 757, Centro, Sobral / CE, CEP 62010-140. Localização central, com estacionamento na rua e fácil acesso. Os horários disponíveis são confirmados via WhatsApp no momento do agendamento.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ CTA FINAL ══╗ -->
+<section class="cta" id="agendar">
+  <svg class="cta-mark"><use href="#logo-mark"/></svg>
+  <div class="container cta-content reveal">
+    <span class="kicker" style="justify-content:center">Sua avaliação · Sobral / CE</span>
+    <h2>Vamos conversar<br>sobre <em>o seu rosto</em>?</h2>
+    <p>Agende uma avaliação personalizada. Respondemos pelo WhatsApp em horário comercial. Você recebe o endereço e os horários disponíveis na hora.</p>
+    <a href="https://wa.me/5588988874311?text=Ol%C3%A1%2C%20Dra.%20Ingrid%2C%20tenho%20interesse%20em%20saber%20como%20funciona%20a%20harmoniza%C3%A7%C3%A3o%20facial." target="_blank" rel="noopener" class="btn btn-primary" style="padding:21px 38px;font-size:15px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A8.78 8.78 0 0 0 12 4a8.79 8.79 0 0 0-7.5 13.32L4 21l3.84-1A8.78 8.78 0 0 0 12 21.36a8.79 8.79 0 0 0 8.78-8.79 8.74 8.74 0 0 0-3.18-6.25zM12 19.85a7.27 7.27 0 0 1-3.71-1l-.27-.16-2.76.72.74-2.69-.18-.28a7.3 7.3 0 1 1 13.55-3.87 7.32 7.32 0 0 1-7.37 7.27zm4-5.45c-.22-.11-1.3-.64-1.5-.71s-.34-.11-.49.1-.56.71-.69.86-.25.16-.47.05a6 6 0 0 1-1.76-1.08 6.55 6.55 0 0 1-1.21-1.51c-.12-.22 0-.34.1-.45s.22-.25.34-.38a1.46 1.46 0 0 0 .22-.37.4.4 0 0 0 0-.39c-.06-.11-.49-1.18-.67-1.61s-.36-.36-.49-.37h-.42a.79.79 0 0 0-.58.27 2.46 2.46 0 0 0-.77 1.83 4.31 4.31 0 0 0 .9 2.27 9.79 9.79 0 0 0 3.74 3.31 12.41 12.41 0 0 0 1.25.46 3 3 0 0 0 1.38.09 2.27 2.27 0 0 0 1.48-1 1.84 1.84 0 0 0 .13-1c-.05-.11-.2-.17-.42-.28z"/></svg>
+      Conversar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ╔══ FOOTER ══╗ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="foot-logo">
+          <svg style="color:var(--bg)"><use href="#logo-horizontal"/></svg>
+        </a>
+        <p class="foot-about">Cirurgiã-dentista especialista em Harmonização Facial. CEO da Clínica Sorria, Sobral / CE.</p>
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p style="line-height:1.7;color:#A8B2BF;margin-bottom:12px">Clínica Odontológica Sorria<br>R. Des. Moreira da Rocha, 757<br>Centro, Sobral / CE<br>CEP 62010-140</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=R.+Des.+Moreira+da+Rocha%2C+757%2C+Centro%2C+Sobral+CE+62010-140" target="_blank" rel="noopener" style="color:var(--serenity)">Ver no Google Maps →</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href="https://wa.me/5588988874311" target="_blank" rel="noopener">WhatsApp · 88 98887-4311</a>
+        <a href="https://www.instagram.com/ingridnelo/" target="_blank" rel="noopener">Instagram · @ingridnelo</a>
+        <a href="mailto:contato@draingridnelo.com">E-mail</a>
+      </div>
+      <div>
+        <h4>Registro</h4>
+        <a style="cursor:default">CRO-CE 12833</a>
+        <a style="cursor:default">UFC, Odontologia</a>
+        <a style="cursor:default">RT: Dra. Ingrid Nelo</a>
+      </div>
+    </div>
+
+    <p class="disclaimer">Este site tem caráter informativo. Resultados de procedimentos estéticos variam conforme as características individuais do paciente, plano de tratamento e cuidados pós-procedimento. Imagens de antes e depois divulgadas com autorização expressa das pacientes, em conformidade com o Código de Ética Odontológica e a Resolução CFO 196/2019. Contraindicações e riscos são discutidos em consulta presencial.</p>
+
+    <div class="foot-bot">
+      <span>© 2026 Dra. Ingrid Nelo · Todos os direitos reservados</span>
+      <span>Sobral / CE · Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Navbar scrolled state
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Reveal animations
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+
+  // Specialties index (interactive list)
+  const specData={
+    preenchimentos:{
+      n:'i.',title:'Preenchimentos',
+      lead:'Ácido hialurônico aplicado dentro da arquitetura facial existente. Cada plano é desenhado a partir das proporções únicas do rosto, sem volume excessivo, sem mudança de identidade.',
+      sub:'O lifting que não passa pela cirurgia.',
+      items:['Lábios (definição e hidratação)','Mandíbula (linha mandibular e mento)','Malar (maçãs do rosto)','Olheiras (sulco lacrimal)']
+    },
+    botox:{
+      n:'ii.',title:'Botox',
+      lead:'Toxina botulínica para suavizar linhas de expressão preservando movimento natural. Aplicação personalizada e individual, sem cara congelada.',
+      sub:'Descansar a expressão, não apagar.',
+      items:['Botox tradicional (linhas de expressão)','Microbotox (refinamento de poros e skin quality)','Full Face (protocolo facial integrado)','Tratamento de bruxismo e sorriso gengival']
+    },
+    fios:{
+      n:'iii.',title:'Fios',
+      lead:'Fios bioabsorvíveis que sustentam ou tracionam o tecido enquanto estimulam a produção de colágeno. Procedimento ambulatorial, retorno rápido à rotina.',
+      sub:'Sustentação que age e depois desaparece.',
+      items:['Sustentação (lifting suave do terço médio e inferior)','Tração (reposicionamento de áreas que cederam)','Estímulo de colágeno por 6 a 12 meses','Indicado para flacidez leve a moderada']
+    },
+    pdrn:{
+      n:'iv.',title:'Microagulhamento com PDRN',
+      lead:'Microagulhas associadas à infusão de PDRN, fragmentos de DNA com ação regeneradora profunda. Tecnologia de ponta em medicina regenerativa aplicada à pele.',
+      sub:'Regeneração celular real, comprovada por evidência.',
+      items:['Estímulo intenso à produção de colágeno','Tratamento de cicatrizes de acne','Melhora de manchas e textura geral','Resultado progressivo ao longo das sessões']
+    }
+  };
+  const specRows=document.querySelectorAll('.spec-row');
+  const specPanel=document.getElementById('spec-content');
+  let specCurrent='preenchimentos';
+  const renderSpec=(key)=>{
+    const d=specData[key];if(!d||key===specCurrent)return;
+    specPanel.classList.add('fading');
+    setTimeout(()=>{
+      specPanel.innerHTML=`
+        <span class="spec-tag">${d.n} Procedimento</span>
+        <h3>${d.title}</h3>
+        <p>${d.lead}</p>
+        <p style="font-family:'Fraunces','Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--serenity-deep);letter-spacing:-.012em">${d.sub}</p>
+        <ul>${d.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+      specPanel.classList.remove('fading');
+      specCurrent=key;
+    },280);
+  };
+  specRows.forEach(row=>{
+    const key=row.dataset.spec;
+    row.addEventListener('mouseenter',()=>{
+      if(window.matchMedia('(min-width:901px)').matches){
+        specRows.forEach(r=>r.classList.remove('active'));
+        row.classList.add('active');
+        renderSpec(key);
+      }
+    });
+    row.addEventListener('click',(e)=>{
+      if(window.matchMedia('(max-width:900px)').matches){
+        e.preventDefault();
+        const wasActive=row.classList.contains('active');
+        specRows.forEach(r=>r.classList.remove('active'));
+        if(!wasActive)row.classList.add('active');
+      }
+    });
+  });
+
+  // Before/After sliders
+  document.querySelectorAll('[data-slider]').forEach(slider=>{
+    const before=slider.querySelector('[data-before]');
+    const handle=slider.querySelector('[data-handle]');
+    let dragging=false;
+    const setPos=(pct)=>{
+      pct=Math.max(0,Math.min(100,pct));
+      before.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+      handle.style.left=pct+'%';
+    };
+    const fromEvent=(e)=>{
+      const rect=slider.getBoundingClientRect();
+      const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      return (x/rect.width)*100;
+    };
+    const start=(e)=>{dragging=true;setPos(fromEvent(e));e.preventDefault();};
+    const move=(e)=>{if(dragging)setPos(fromEvent(e));};
+    const end=()=>dragging=false;
+    slider.addEventListener('mousedown',start);
+    slider.addEventListener('touchstart',start,{passive:false});
+    window.addEventListener('mousemove',move);
+    window.addEventListener('touchmove',move,{passive:true});
+    window.addEventListener('mouseup',end);
+    window.addEventListener('touchend',end);
+    setPos(50);
+  });
+})();
+</script>
+</body>
+</html>
